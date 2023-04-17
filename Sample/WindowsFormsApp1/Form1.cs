@@ -23,12 +23,7 @@ namespace WindowsFormsApp1 {
 
         //イベントハンドラ
         private void btPow_Click(object sender, EventArgs e) {
-            int ans = 1;
-            for (int i = 0; i < nudY.Value; i++)
-            {
-                 ans = ans*(int)(nudX.Value);
-            }
-            tbResult.Text= ans.ToString();
+            tbResult.Text = System.Math.Pow((double)nudX.Value, (double)nudY.Value).ToString();
         }
     }
 }
