@@ -19,11 +19,12 @@ namespace BallApp {
         static void Main(string[] args) {
             Application.Run(new Program());
         }
-
+        int count = 1;
         public Program() {
+            
             this.Size = new Size(800, 600);
             this.BackColor = Color.Green;
-            this.Text = "BallGame";
+            
             this.MouseClick += Program_MouseClick;
 
             
@@ -43,10 +44,10 @@ namespace BallApp {
             pb.Size = new Size(50, 50); //画像の表示サイズ
             pb.SizeMode = PictureBoxSizeMode.StretchImage;  //画像の表示モード
             pb.Parent = this;
-
+            this.Text = count.ToString();
             balls.Add(soccerBall);
             pbs.Add(pb);
-
+            count =count+ 1;
             moveTimer.Start();  //タイマースタート
 
         }
