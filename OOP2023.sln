@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "Sample\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallApp", "Sample\BallApp\BallApp.csproj", "{6E12030E-606E-4949-BFAC-5A5A1F94E75E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter01", "Chapter01", "{0506D917-3438-47B9-8812-5D27B46167E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSample", "Chapter01\Product\ProductSample.csproj", "{C9D29072-F0E2-4C70-82AF-A0BE0087A919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{6E12030E-606E-4949-BFAC-5A5A1F94E75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E12030E-606E-4949-BFAC-5A5A1F94E75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E12030E-606E-4949-BFAC-5A5A1F94E75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D29072-F0E2-4C70-82AF-A0BE0087A919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D29072-F0E2-4C70-82AF-A0BE0087A919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D29072-F0E2-4C70-82AF-A0BE0087A919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D29072-F0E2-4C70-82AF-A0BE0087A919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3E015C17-9572-473A-BD7D-F28C984475A7} = {0BD434FA-6664-42EE-9797-AF7819A547D7}
 		{4BCEFD33-5C05-4BE7-A584-371AD67B183C} = {0BD434FA-6664-42EE-9797-AF7819A547D7}
+		{6E12030E-606E-4949-BFAC-5A5A1F94E75E} = {0BD434FA-6664-42EE-9797-AF7819A547D7}
+		{C9D29072-F0E2-4C70-82AF-A0BE0087A919} = {0506D917-3438-47B9-8812-5D27B46167E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F881BFE1-93C7-466A-AFEF-EB3886F7EBA7}
