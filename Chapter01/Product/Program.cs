@@ -17,6 +17,8 @@ namespace ProductSample {
             //Console.WriteLine("大福もちの税込み価格：" + daihuku.GetPriceIncludingTax());
             #endregion
 
+            string[] DayOfWeekJp = { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", };
+
             //DateTime date = new DateTime(2023, 5, 8);
             TimeSpan totalDays;
             DateTime date = DateTime.Now;
@@ -31,6 +33,7 @@ namespace ProductSample {
 
             totalDays = date - birth;
             Console.WriteLine("あなたは生まれてから今日まで{0}日目です", totalDays.Days);
+            Console.WriteLine(DayOfWeekJp[(int)birth.DayOfWeek]);
         }
 
 
