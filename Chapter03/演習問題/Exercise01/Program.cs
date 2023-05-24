@@ -38,16 +38,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            var number = numbers.Where(s => s >= 50);
-            foreach (var item in number) {
-                Console.WriteLine(item);
-            }   
+            numbers.Where(s => s >= 50).ToList().ForEach(Console.WriteLine);
+            //foreach (var item in number) {
+            //    Console.WriteLine(item);
+            //}   
         }
         private static void Exercise1_4(List<int> numbers) {
-            var number = numbers.Select(s => s * 2).ToList();
-            foreach (var item in number) {
-                Console.WriteLine(item);
-            }
+            numbers.Select(s => s * 2).ToList().ForEach(Console.WriteLine);
+            //foreach (var item in number) {
+            //    Console.WriteLine(item);
+            //}
         }
     }
 }
