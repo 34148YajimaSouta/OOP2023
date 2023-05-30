@@ -36,7 +36,7 @@ namespace Exercise01 {
         }
 
         public override string ToString() {
-            return base.ToString();
+            return Year+"年"+Month+"月";
         }
     }
     
