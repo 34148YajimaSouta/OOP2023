@@ -10,10 +10,25 @@ namespace Exercise01 {
 
         public int Month { get; private set; }
 
+        
 
-        public YearMonth(int Year,int Month) {
-            this.Year = Year;
-            this.Month = Month;
+        public YearMonth(int year,int month) {
+            Year = year;
+            Month = month;
+        }
+
+        public bool Is21Century {
+            get {
+                return Year >= 2001 && Year <= 2100;
+            }
+        }
+
+        //public YearMonth AddOneMonth() {
+
+        //}
+
+        public override string ToString() {
+            return base.ToString();
         }
     }
     
