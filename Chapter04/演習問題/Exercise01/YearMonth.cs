@@ -23,9 +23,17 @@ namespace Exercise01 {
             }
         }
 
-        //public YearMonth AddOneMonth() {
-
-        //}
+        public YearMonth AddOneMonth() {
+            if (Month == 12) {
+                return new YearMonth(Year + 1, 1);
+            }
+            else {
+                return new YearMonth(Year, Month + 1);
+            }
+            
+            
+            //return new YearMonth(Month==12 ? Year + 1 :Year,Month == 12 ? 1 : Month + 1);
+        }
 
         public override string ToString() {
             return base.ToString();
