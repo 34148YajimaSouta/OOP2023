@@ -47,15 +47,29 @@ namespace Exercise02 {
         }
 
         //4.2.3
-        //static YearMonth FindFirst21C(YearMonth[] yms) {
-
-        //}
+        static YearMonth FindFirst21C(YearMonth[] yms) {
+            foreach (var ym in yms) {
+                if (ym.Is21Century) {
+                    return ym;
+                }
+            }
+            return null;
+        }
 
         private static void Exercise2_4(YearMonth[] ymCollection) {
+            var YearMonth = FindFirst21C(ymCollection);
+            if(YearMonth == null) {
+                Console.WriteLine("21世紀のデータはありません");
+            }
+            else {
+                Console.WriteLine(YearMonth);
+            }
 
         }
         private static void Exercise2_5(YearMonth[] ymCollection) {
+            var array = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
 
+            Exercise2_2(array);
         }
     }
 }
