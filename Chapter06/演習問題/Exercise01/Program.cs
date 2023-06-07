@@ -33,9 +33,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
+            var stringNumbers = numbers.Select(n => n.ToString());
+            foreach (var stringNum in stringNumbers) {
+                Console.WriteLine(stringNum);
+            }
+            
         }
 
         private static void Exercise1_4(int[] numbers) {
+            var numberObj = numbers.OrderBy(n=>n).ToArray();
+            foreach (var num in numberObj.Take(3)) {
+                Console.WriteLine(num);
+            }
         }
 
         private static void Exercise1_5(int[] numbers) {
