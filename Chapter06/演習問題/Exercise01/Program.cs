@@ -8,7 +8,7 @@ namespace Exercise01 {
     class Program {
         static void Main(string[] args) {
             var numbers = new int[] { 5, 10, 17, 9, 3, 21, 10, 40, 21, 3, 35 };
-
+            #region
             Exercise1_1(numbers);
             Console.WriteLine("-----");
 
@@ -22,32 +22,34 @@ namespace Exercise01 {
             Console.WriteLine("-----");
 
             Exercise1_5(numbers);
+            #endregion
         }
 
         private static void Exercise1_1(int[] numbers) {
-            Console.WriteLine(numbers.Max());
+            var max = numbers.Max();
+            Console.WriteLine(max);
         }
 
         private static void Exercise1_2(int[] numbers) {
-            Console.WriteLine(numbers[numbers.Length - 1]+" "+numbers[numbers.Length - 2]);
+            var skip = numbers.Length - 2;
+            foreach (var n in numbers.Skip(skip))
+                Console.WriteLine(n);
         }
 
         private static void Exercise1_3(int[] numbers) {
-            var stringNumbers = numbers.Select(n => n.ToString());
-            foreach (var stringNum in stringNumbers) {
-                Console.WriteLine(stringNum);
-            }
-            
+            var strs = numbers.Select(n => n.ToString());
+            foreach (var s in strs)
+                Console.WriteLine(s);
         }
 
         private static void Exercise1_4(int[] numbers) {
-            var numberObj = numbers.OrderBy(n=>n).ToArray();
-            foreach (var num in numberObj.Take(3)) {
-                Console.WriteLine(num);
-            }
+            foreach (var n in numbers.OrderBy(n => n).Take(3))
+                Console.WriteLine(n);
         }
 
         private static void Exercise1_5(int[] numbers) {
+            var count = numbers.Distinct().Count(n => n > 10);
+            Console.WriteLine(count);
         }
     }
 }
