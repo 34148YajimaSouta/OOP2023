@@ -10,13 +10,18 @@ namespace Section01 {
             var kentyou = new Dictionary<string, string>() {
                 
             };
+            string shozaiti;
             Console.WriteLine("県庁所在地の登録");
             Console.Write("県名：");
             var kenmei =Console.ReadLine();
             while (kenmei != "999") {
                 Console.Write("所在地：");
-                var shozaiti = Console.ReadLine();
-                kentyou[kenmei] = shozaiti;
+                shozaiti = Console.ReadLine();
+                if (kentyou.ContainsKey(kenmei)) {
+                    Console.Write("上書きしますか？y/n ");
+                    if (Console.ReadLine()=="y") { kentyou[kenmei] = shozaiti; }                   
+                }
+                else { kentyou[kenmei] = shozaiti; }
                 Console.Write("県名：");
                 kenmei = Console.ReadLine();
             };
