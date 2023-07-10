@@ -132,6 +132,7 @@ namespace CarReportSystem {
             this.rbOther.Size = new System.Drawing.Size(61, 18);
             this.rbOther.TabIndex = 7;
             this.rbOther.TabStop = true;
+            this.rbOther.Tag = "7";
             this.rbOther.Text = "その他";
             this.rbOther.UseVisualStyleBackColor = true;
             // 
@@ -144,6 +145,7 @@ namespace CarReportSystem {
             this.rbImported.Size = new System.Drawing.Size(61, 18);
             this.rbImported.TabIndex = 6;
             this.rbImported.TabStop = true;
+            this.rbImported.Tag = "6";
             this.rbImported.Text = "輸入車";
             this.rbImported.UseVisualStyleBackColor = true;
             // 
@@ -156,6 +158,7 @@ namespace CarReportSystem {
             this.rbDaihatsu.Size = new System.Drawing.Size(73, 18);
             this.rbDaihatsu.TabIndex = 5;
             this.rbDaihatsu.TabStop = true;
+            this.rbDaihatsu.Tag = "5";
             this.rbDaihatsu.Text = "ダイハツ";
             this.rbDaihatsu.UseVisualStyleBackColor = true;
             // 
@@ -168,6 +171,7 @@ namespace CarReportSystem {
             this.rbSuzuki.Size = new System.Drawing.Size(61, 18);
             this.rbSuzuki.TabIndex = 4;
             this.rbSuzuki.TabStop = true;
+            this.rbSuzuki.Tag = "4";
             this.rbSuzuki.Text = "スズキ";
             this.rbSuzuki.UseVisualStyleBackColor = true;
             // 
@@ -180,6 +184,7 @@ namespace CarReportSystem {
             this.rbSubaru.Size = new System.Drawing.Size(61, 18);
             this.rbSubaru.TabIndex = 3;
             this.rbSubaru.TabStop = true;
+            this.rbSubaru.Tag = "3";
             this.rbSubaru.Text = "スバル";
             this.rbSubaru.UseVisualStyleBackColor = true;
             // 
@@ -192,6 +197,7 @@ namespace CarReportSystem {
             this.rbHonda.Size = new System.Drawing.Size(61, 18);
             this.rbHonda.TabIndex = 2;
             this.rbHonda.TabStop = true;
+            this.rbHonda.Tag = "2";
             this.rbHonda.Text = "ホンダ";
             this.rbHonda.UseVisualStyleBackColor = true;
             // 
@@ -204,6 +210,7 @@ namespace CarReportSystem {
             this.rbNissan.Size = new System.Drawing.Size(49, 18);
             this.rbNissan.TabIndex = 1;
             this.rbNissan.TabStop = true;
+            this.rbNissan.Tag = "1";
             this.rbNissan.Text = "日産";
             this.rbNissan.UseVisualStyleBackColor = true;
             // 
@@ -216,6 +223,7 @@ namespace CarReportSystem {
             this.rbToyota.Size = new System.Drawing.Size(61, 18);
             this.rbToyota.TabIndex = 0;
             this.rbToyota.TabStop = true;
+            this.rbToyota.Tag = "0";
             this.rbToyota.Text = "トヨタ";
             this.rbToyota.UseVisualStyleBackColor = true;
             // 
@@ -372,21 +380,21 @@ namespace CarReportSystem {
             // 
             this.開くOToolStripMenuItem.Name = "開くOToolStripMenuItem";
             this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.開くOToolStripMenuItem.Text = "開く(&O)...";
             // 
             // 保存SToolStripMenuItem
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
             this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存SToolStripMenuItem.Text = "保存(&S)...";
             // 
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             // 
             // Form1
