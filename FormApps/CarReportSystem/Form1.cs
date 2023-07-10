@@ -24,16 +24,16 @@ namespace CarReportSystem {
 
         //追加ボタンがクリックされた時のイベントハンドラ―
         private void btAdd_Click(object sender, EventArgs e) {
-            var maker= getSelectedMarker();
-            var CarReport = new CarReport{
+            
+            var carReport = new CarReport{
                 Date = dtpDate.Value,
                 Author = cbAuthor.Text,
-                Maker =maker.ToString(),
+                Maker =getSelectedMarker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
                 
             };
-            CarReports.Add(CarReport);
+            CarReports.Add(carReport);
         }
 
         private CarReport.MakerGroup getSelectedMarker() {
@@ -58,7 +58,24 @@ namespace CarReportSystem {
             else {
                 return CarReport.MakerGroup.その他;
             }
-            
+            //int tag = 0;
+            //foreach (var item in gbMaker.Controls) {
+            //    if (((RadioButton)item).Checked) {
+            //        tag =int.Parse(((RadioButton)item).Tag.ToString());
+            //        return (CarReport.MakerGroup)((RadioButton)item).Tag;
+            //    }
+            //}
+            //return CarReport.MakerGroup.その他;
+        }
+
+        private void btImageOpen_Click(object sender, EventArgs e) {
+            ofdImageFileOpen.ShowDialog();
+            pbCarImage.Image = Image.FromFile(ofdImageFileOpen.FileName);
+        }
+
+        private void btDelete_Click(object sender, EventArgs e) {
+            var select = dgvCarReports.CurrentRow.Index;
+            CarReports.RemoveAt(select);
         }
     }
 }

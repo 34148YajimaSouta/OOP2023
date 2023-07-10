@@ -56,6 +56,7 @@ namespace CarReportSystem {
             this.開くOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ofdImageFileOpen = new System.Windows.Forms.OpenFileDialog();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -269,10 +270,12 @@ namespace CarReportSystem {
             this.dgvCarReports.AllowUserToDeleteRows = false;
             this.dgvCarReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarReports.Location = new System.Drawing.Point(70, 429);
+            this.dgvCarReports.MultiSelect = false;
             this.dgvCarReports.Name = "dgvCarReports";
             this.dgvCarReports.ReadOnly = true;
             this.dgvCarReports.RowTemplate.Height = 21;
-            this.dgvCarReports.Size = new System.Drawing.Size(466, 188);
+            this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarReports.Size = new System.Drawing.Size(590, 188);
             this.dgvCarReports.TabIndex = 10;
             // 
             // label6
@@ -304,6 +307,7 @@ namespace CarReportSystem {
             this.btImageOpen.TabIndex = 13;
             this.btImageOpen.Text = "開く...";
             this.btImageOpen.UseVisualStyleBackColor = true;
+            this.btImageOpen.Click += new System.EventHandler(this.btImageOpen_Click);
             // 
             // btImageDelete
             // 
@@ -320,7 +324,7 @@ namespace CarReportSystem {
             this.pbCarImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pbCarImage.Location = new System.Drawing.Point(369, 69);
             this.pbCarImage.Name = "pbCarImage";
-            this.pbCarImage.Size = new System.Drawing.Size(206, 195);
+            this.pbCarImage.Size = new System.Drawing.Size(261, 252);
             this.pbCarImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCarImage.TabIndex = 15;
             this.pbCarImage.TabStop = false;
@@ -328,7 +332,7 @@ namespace CarReportSystem {
             // btAdd
             // 
             this.btAdd.Font = new System.Drawing.Font("UD デジタル 教科書体 N-R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btAdd.Location = new System.Drawing.Point(373, 288);
+            this.btAdd.Location = new System.Drawing.Point(369, 347);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(62, 58);
             this.btAdd.TabIndex = 16;
@@ -339,7 +343,7 @@ namespace CarReportSystem {
             // btModifi
             // 
             this.btModifi.Font = new System.Drawing.Font("UD デジタル 教科書体 N-R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btModifi.Location = new System.Drawing.Point(445, 288);
+            this.btModifi.Location = new System.Drawing.Point(456, 347);
             this.btModifi.Name = "btModifi";
             this.btModifi.Size = new System.Drawing.Size(62, 58);
             this.btModifi.TabIndex = 17;
@@ -349,12 +353,13 @@ namespace CarReportSystem {
             // btDelete
             // 
             this.btDelete.Font = new System.Drawing.Font("UD デジタル 教科書体 N-R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btDelete.Location = new System.Drawing.Point(513, 288);
+            this.btDelete.Location = new System.Drawing.Point(541, 347);
             this.btDelete.Name = "btDelete";
             this.btDelete.Size = new System.Drawing.Size(62, 58);
             this.btDelete.TabIndex = 18;
             this.btDelete.Text = "削除";
             this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // menuStrip1
             // 
@@ -396,6 +401,10 @@ namespace CarReportSystem {
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
+            // 
+            // ofdImageFileOpen
+            // 
+            this.ofdImageFileOpen.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -472,6 +481,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem 開くOToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 保存SToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 終了XToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog ofdImageFileOpen;
     }
 }
 
