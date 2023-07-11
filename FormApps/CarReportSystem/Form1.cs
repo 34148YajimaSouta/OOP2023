@@ -35,7 +35,7 @@ namespace CarReportSystem {
             };
             CarReports.Add(carReport);
         }
-
+        //ラジオボタンで選択されているメーカーを返却
         private CarReport.MakerGroup getSelectedMarker() {
             if (rbToyota.Checked) {
                 return CarReport.MakerGroup.トヨタ;
@@ -57,15 +57,48 @@ namespace CarReportSystem {
             }
             else {
                 return CarReport.MakerGroup.その他;
+                
             }
             //int tag = 0;
             //foreach (var item in gbMaker.Controls) {
             //    if (((RadioButton)item).Checked) {
             //        tag =int.Parse(((RadioButton)item).Tag.ToString());
-            //        return (CarReport.MakerGroup)((RadioButton)item).Tag;
+            //        return (CarReport.MakerGroup)((RadioButton)item).Tag.ToString();
             //    }
             //}
             //return CarReport.MakerGroup.その他;
+        }
+
+        //指定したメーカーのラジオボタンをセット
+        private void getSelectMaker(CarReport.MakerGroup makerGroup) {
+            switch (makerGroup) {
+                case CarReport.MakerGroup.トヨタ:
+                    rbToyota.Checked = true;
+                    break;
+                case CarReport.MakerGroup.日産:
+                    rbNissan.Checked = true;
+                    break;
+                case CarReport.MakerGroup.ホンダ:
+                    rbHonda.Checked = true;
+                    break;
+                case CarReport.MakerGroup.スバル:
+                    rbSubaru.Checked = true;
+                    break;
+                case CarReport.MakerGroup.スズキ:
+                    rbSuzuki.Checked = true;
+                    break;
+                case CarReport.MakerGroup.ダイハツ:
+                    rbDaihatsu.Checked = true;
+                    break;
+                case CarReport.MakerGroup.輸入車:
+                    rbImported.Checked = true;
+                    break;
+                case CarReport.MakerGroup.その他:
+                    rbOther.Checked = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void btImageOpen_Click(object sender, EventArgs e) {
@@ -74,8 +107,26 @@ namespace CarReportSystem {
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
-            var select = dgvCarReports.CurrentRow.Index;
-            CarReports.RemoveAt(select);
+            CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+        }
+
+        private void dgvCarReports_Click(object sender, EventArgs e) {
+            dtpDate.Value = (DateTime)dgvCarReports.CurrentRow.Cells[0].Value;
+            cbAuthor.Text = dgvCarReports.CurrentRow.Cells[1].Value.ToString();
+            getSelectMaker((CarReport.MakerGroup)dgvCarReports.CurrentRow.Cells[2].Value);
+            cbCarName.Text = dgvCarReports.CurrentRow.Cells[3].Value.ToString();
+            tbReport.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
+            pbCarImage.Image = (Image)dgvCarReports.CurrentRow.Cells[5].Value;
+        }
+
+        private void btModify_Click(object sender, EventArgs e) {
+
+            dgvCarReports.CurrentRow.Cells[0].Value = dtpDate.Value;
+            dgvCarReports.CurrentRow.Cells[1].Value = cbAuthor.Text;
+            dgvCarReports.CurrentRow.Cells[2].Value = getSelectedMarker();
+            dgvCarReports.CurrentRow.Cells[3].Value = cbCarName.Text;
+            dgvCarReports.CurrentRow.Cells[4].Value = tbReport.Text;
+            dgvCarReports.CurrentRow.Cells[5].Value = pbCarImage.Image;
         }
     }
 }

@@ -49,7 +49,7 @@ namespace CarReportSystem {
             this.btImageDelete = new System.Windows.Forms.Button();
             this.pbCarImage = new System.Windows.Forms.PictureBox();
             this.btAdd = new System.Windows.Forms.Button();
-            this.btModifi = new System.Windows.Forms.Button();
+            this.btModify = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -277,6 +277,7 @@ namespace CarReportSystem {
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarReports.Size = new System.Drawing.Size(590, 188);
             this.dgvCarReports.TabIndex = 10;
+            this.dgvCarReports.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // label6
             // 
@@ -340,15 +341,16 @@ namespace CarReportSystem {
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // btModifi
+            // btModify
             // 
-            this.btModifi.Font = new System.Drawing.Font("UD デジタル 教科書体 N-R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btModifi.Location = new System.Drawing.Point(456, 347);
-            this.btModifi.Name = "btModifi";
-            this.btModifi.Size = new System.Drawing.Size(62, 58);
-            this.btModifi.TabIndex = 17;
-            this.btModifi.Text = "修正";
-            this.btModifi.UseVisualStyleBackColor = true;
+            this.btModify.Font = new System.Drawing.Font("UD デジタル 教科書体 N-R", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btModify.Location = new System.Drawing.Point(456, 347);
+            this.btModify.Name = "btModify";
+            this.btModify.Size = new System.Drawing.Size(62, 58);
+            this.btModify.TabIndex = 17;
+            this.btModify.Text = "修正";
+            this.btModify.UseVisualStyleBackColor = true;
+            this.btModify.Click += new System.EventHandler(this.btModify_Click);
             // 
             // btDelete
             // 
@@ -413,7 +415,7 @@ namespace CarReportSystem {
             this.ClientSize = new System.Drawing.Size(672, 636);
             this.Controls.Add(this.dgvCarReports);
             this.Controls.Add(this.btDelete);
-            this.Controls.Add(this.btModifi);
+            this.Controls.Add(this.btModify);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.pbCarImage);
             this.Controls.Add(this.btImageDelete);
@@ -474,7 +476,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.Button btImageDelete;
         private System.Windows.Forms.PictureBox pbCarImage;
         private System.Windows.Forms.Button btAdd;
-        private System.Windows.Forms.Button btModifi;
+        private System.Windows.Forms.Button btModify;
         private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
