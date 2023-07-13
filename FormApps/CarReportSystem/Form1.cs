@@ -19,7 +19,8 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-
+            btDelete.Enabled = false;
+            btModify.Enabled = false;
         }
 
         //追加ボタンがクリックされた時のイベントハンドラ―
@@ -31,9 +32,22 @@ namespace CarReportSystem {
                 Maker =getSelectedMarker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
-                
+                CarImage =pbCarImage.Image,
             };
+            if (cbAuthor.Text == "") {
+                tsInfoText.Text = "記録者を入力してください";
+               
+                return;
+            }else if(cbCarName.Text == "") {
+                tsInfoText.Text = "車名を入力してください";
+               
+                return;
+            }
             CarReports.Add(carReport);
+            clearselect();
+            btDelete.Enabled = true;
+            btModify.Enabled = true;
+            tsInfoText.Text="";
         }
         //ラジオボタンで選択されているメーカーを返却
         private CarReport.MakerGroup getSelectedMarker() {
@@ -108,6 +122,10 @@ namespace CarReportSystem {
 
         private void btDelete_Click(object sender, EventArgs e) {
             CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
+            if (dgvCarReports.CurrentRow == null) {
+                btDelete.Enabled = false;
+                btModify.Enabled = false;
+            }
         }
 
         private void dgvCarReports_Click(object sender, EventArgs e) {
@@ -127,6 +145,48 @@ namespace CarReportSystem {
             dgvCarReports.CurrentRow.Cells[3].Value = cbCarName.Text;
             dgvCarReports.CurrentRow.Cells[4].Value = tbReport.Text;
             dgvCarReports.CurrentRow.Cells[5].Value = pbCarImage.Image;
+        }
+
+        private void clearselect() {
+            cbAuthor.Text = "";
+            cbCarName.Text = "";
+            tbReport.Text = "";
+            switch (getSelectedMarker()) {
+                case CarReport.MakerGroup.トヨタ:
+                    rbToyota.Checked =false;
+                    break;
+                case CarReport.MakerGroup.日産:
+                    rbNissan.Checked = false;
+                    break;
+                case CarReport.MakerGroup.ホンダ:
+                    rbHonda.Checked = false;
+                    break;
+                case CarReport.MakerGroup.スバル:
+                    rbSubaru.Checked = false;
+                    break;
+                case CarReport.MakerGroup.スズキ:
+                    rbSuzuki.Checked = false;
+                    break;
+                case CarReport.MakerGroup.ダイハツ:
+                    rbDaihatsu.Checked = false;
+                    break;
+                case CarReport.MakerGroup.輸入車:
+                    rbImported.Checked = false;
+                    break;
+                case CarReport.MakerGroup.その他:
+                    rbOther.Checked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void バージョン情報ToolStripMenuItem_Click(object sender, EventArgs e) {
+            
         }
     }
 }
