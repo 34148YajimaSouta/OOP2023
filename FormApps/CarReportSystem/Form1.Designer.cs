@@ -56,14 +56,15 @@ namespace CarReportSystem {
             this.開くOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.保存SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.終了XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.色設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ヘルプHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.バージョン情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ofdImageFileOpen = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsInfoText = new System.Windows.Forms.ToolStripStatusLabel();
-            this.編集HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ヘルプHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.色設定ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.バージョン情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cdColor = new System.Windows.Forms.ColorDialog();
+            this.btScaleChange = new System.Windows.Forms.Button();
             this.gbMaker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarReports)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCarImage)).BeginInit();
@@ -333,7 +334,7 @@ namespace CarReportSystem {
             this.pbCarImage.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pbCarImage.Location = new System.Drawing.Point(369, 69);
             this.pbCarImage.Name = "pbCarImage";
-            this.pbCarImage.Size = new System.Drawing.Size(261, 252);
+            this.pbCarImage.Size = new System.Drawing.Size(290, 252);
             this.pbCarImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCarImage.TabIndex = 15;
             this.pbCarImage.TabStop = false;
@@ -417,6 +418,36 @@ namespace CarReportSystem {
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
+            // 編集HToolStripMenuItem
+            // 
+            this.編集HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.色設定ToolStripMenuItem});
+            this.編集HToolStripMenuItem.Name = "編集HToolStripMenuItem";
+            this.編集HToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.編集HToolStripMenuItem.Text = "編集(&H)";
+            // 
+            // 色設定ToolStripMenuItem
+            // 
+            this.色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
+            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.色設定ToolStripMenuItem.Text = "色設定...";
+            this.色設定ToolStripMenuItem.Click += new System.EventHandler(this.色設定ToolStripMenuItem_Click);
+            // 
+            // ヘルプHToolStripMenuItem
+            // 
+            this.ヘルプHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.バージョン情報ToolStripMenuItem});
+            this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
+            this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
+            // 
+            // バージョン情報ToolStripMenuItem
+            // 
+            this.バージョン情報ToolStripMenuItem.Name = "バージョン情報ToolStripMenuItem";
+            this.バージョン情報ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.バージョン情報ToolStripMenuItem.Text = "バージョン情報";
+            this.バージョン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョン情報ToolStripMenuItem_Click);
+            // 
             // ofdImageFileOpen
             // 
             this.ofdImageFileOpen.FileName = "openFileDialog1";
@@ -438,40 +469,22 @@ namespace CarReportSystem {
             this.tsInfoText.Size = new System.Drawing.Size(118, 17);
             this.tsInfoText.Text = "toolStripStatusLabel1";
             // 
-            // 編集HToolStripMenuItem
+            // btScaleChange
             // 
-            this.編集HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.色設定ToolStripMenuItem});
-            this.編集HToolStripMenuItem.Name = "編集HToolStripMenuItem";
-            this.編集HToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.編集HToolStripMenuItem.Text = "編集(&H)";
-            // 
-            // ヘルプHToolStripMenuItem
-            // 
-            this.ヘルプHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.バージョン情報ToolStripMenuItem});
-            this.ヘルプHToolStripMenuItem.Name = "ヘルプHToolStripMenuItem";
-            this.ヘルプHToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.ヘルプHToolStripMenuItem.Text = "ヘルプ(&H)";
-            // 
-            // 色設定ToolStripMenuItem
-            // 
-            this.色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            this.色設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.色設定ToolStripMenuItem.Text = "色設定...";
-            // 
-            // バージョン情報ToolStripMenuItem
-            // 
-            this.バージョン情報ToolStripMenuItem.Name = "バージョン情報ToolStripMenuItem";
-            this.バージョン情報ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.バージョン情報ToolStripMenuItem.Text = "バージョン情報";
-            this.バージョン情報ToolStripMenuItem.Click += new System.EventHandler(this.バージョン情報ToolStripMenuItem_Click);
+            this.btScaleChange.Location = new System.Drawing.Point(581, 36);
+            this.btScaleChange.Name = "btScaleChange";
+            this.btScaleChange.Size = new System.Drawing.Size(78, 27);
+            this.btScaleChange.TabIndex = 24;
+            this.btScaleChange.Text = "サイズ変更";
+            this.btScaleChange.UseVisualStyleBackColor = true;
+            this.btScaleChange.Click += new System.EventHandler(this.btScaleChange_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 626);
+            this.Controls.Add(this.btScaleChange);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dgvCarReports);
             this.Controls.Add(this.btDelete);
@@ -555,6 +568,7 @@ namespace CarReportSystem {
         private System.Windows.Forms.ToolStripMenuItem ヘルプHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem バージョン情報ToolStripMenuItem;
         private System.Windows.Forms.ColorDialog cdColor;
+        private System.Windows.Forms.Button btScaleChange;
     }
 }
 
