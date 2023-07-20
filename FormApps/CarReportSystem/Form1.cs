@@ -7,21 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
 
+        Settings settings = new Settings();
         public Form1() {
             InitializeComponent();
             dgvCarReports.DataSource = CarReports;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            dgvCarReports.Columns[5].Visible = false;
             btDelete.Enabled = false;
             btModify.Enabled = false;
+
+            //using (var reader = XmlReader.Create("settings.xml")) {
+            //    var serializer = new XmlSerializer(typeof(Settings));
+            //    settings = serializer.Deserialize(reader) as Settings;
+            //    BackColor = Color.FromArgb(settings.MainFormColor);
+            //}
         }
+
+        
 
         //追加ボタンがクリックされた時のイベントハンドラ―
         private void btAdd_Click(object sender, EventArgs e) {
@@ -44,11 +56,23 @@ namespace CarReportSystem {
                 return;
             }
             CarReports.Add(carReport);
-            clearselect();
-            btDelete.Enabled = true;
-            btModify.Enabled = true;
+            setCbAuthor(cbAuthor.Text);    
+            setCbCarName(cbCarName.Text);   
             tsInfoText.Text="";
             editItemClear();
+        }
+
+        //記録者コンボボックスの履歴登録処理
+        private void setCbAuthor(string author) {
+            if (!cbAuthor.Items.Contains(author)) {
+                cbAuthor.Items.Add(author);
+            }
+        }
+        //車名コンボボックスの履歴登録処理
+        private void setCbCarName(string carname) {
+            if (!cbCarName.Items.Contains(carname)) {
+                cbCarName.Items.Add(carname);
+            }
         }
 
         private void editItemClear() {
@@ -221,14 +245,23 @@ namespace CarReportSystem {
 
             if (cdColor.ShowDialog() == DialogResult.OK) {
                 BackColor = cdColor.Color;
+                settings.MainFormColor = cdColor.Color.ToArgb();
             }
         }
         int mode = 0;
         private void btScaleChange_Click(object sender, EventArgs e) {
-            mode = mode < 4 ? ++mode : 0;
+            mode = mode < 4 ?((mode==1)?3: ++mode) : 0;
             pbCarImage.SizeMode = (PictureBoxSizeMode)mode;
             
 
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルのシリアル化
+            using(var writer = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
+            }
         }
     }
 }
