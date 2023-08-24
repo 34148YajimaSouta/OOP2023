@@ -14,7 +14,7 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
         //管理用データ
         BindingList<CarReport> CarReports = new BindingList<CarReport>();
-
+        
         Settings settings = new Settings();
         public Form1() {
             InitializeComponent();
@@ -22,15 +22,21 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+
+            tsInfoText.Text = ""; //情報表示領域のテキストを初期化
+            tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
+            tmTimeUpdate.Start();
+
             dgvCarReports.Columns[5].Visible = false;
             btDelete.Enabled = false;
             btModify.Enabled = false;
 
-            //using (var reader = XmlReader.Create("settings.xml")) {
-            //    var serializer = new XmlSerializer(typeof(Settings));
-            //    settings = serializer.Deserialize(reader) as Settings;
-            //    BackColor = Color.FromArgb(settings.MainFormColor);
-            //}
+            //設定ファイルを逆シリアル化
+            using (var reader = XmlReader.Create("settings.xml")) {
+                var serializer = new XmlSerializer(typeof(Settings));
+                settings = serializer.Deserialize(reader) as Settings;
+                BackColor = Color.FromArgb(settings.MainFormColor);
+            }
         }
 
         
@@ -262,6 +268,14 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }
+        }
+
+        private void btImageDelete_Click(object sender, EventArgs e) {
+            pbCarImage.Image = null;
+        }
+
+        private void tmTimeUpdate_Tick(object sender, EventArgs e) {
+            DateTime.Now.ToString("HH時mm分ss秒");
         }
     }
 }
