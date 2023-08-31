@@ -291,6 +291,7 @@ namespace CarReportSystem {
             this.dgvCarReports.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarReports.Size = new System.Drawing.Size(590, 172);
             this.dgvCarReports.TabIndex = 10;
+            this.dgvCarReports.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCarReports_CellClick);
             this.dgvCarReports.Click += new System.EventHandler(this.dgvCarReports_Click);
             // 
             // label6
@@ -406,7 +407,7 @@ namespace CarReportSystem {
             // 
             this.開くOToolStripMenuItem.Name = "開くOToolStripMenuItem";
             this.開くOToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くOToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.開くOToolStripMenuItem.Text = "開く(&O)...";
             this.開くOToolStripMenuItem.Click += new System.EventHandler(this.開くOToolStripMenuItem_Click);
             // 
@@ -414,7 +415,7 @@ namespace CarReportSystem {
             // 
             this.保存SToolStripMenuItem.Name = "保存SToolStripMenuItem";
             this.保存SToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存SToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.保存SToolStripMenuItem.Text = "保存(&S)...";
             this.保存SToolStripMenuItem.Click += new System.EventHandler(this.保存SToolStripMenuItem_Click);
             // 
@@ -422,7 +423,7 @@ namespace CarReportSystem {
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
             this.終了XToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.終了XToolStripMenuItem.Text = "終了(&X)";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
