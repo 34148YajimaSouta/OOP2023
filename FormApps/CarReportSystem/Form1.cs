@@ -53,15 +53,24 @@ namespace CarReportSystem {
 
         //追加ボタンがクリックされた時のイベントハンドラ―
         private void btAdd_Click(object sender, EventArgs e) {
-            
-            var carReport = new CarReport{
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker =getSelectedMaker(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                CarImage =pbCarImage.Image,
-            };
+            DataRow newRow = infosys202317DataSet.CarReportTable.NewRow();
+            newRow[1] = dtpDate.Value;
+            newRow[2] = cbAuthor.Text;
+            newRow[3] = getSelectedMaker();
+            newRow[4] = cbCarName.Text;
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray( pbCarImage.Image);
+
+            infosys202317DataSet.CarReportTable.Rows.Add(newRow);
+            this.carReportTableTableAdapter.Update(infosys202317DataSet.CarReportTable);
+            //var carReport = new CarReport{
+            //    Date = dtpDate.Value,
+            //    Author = cbAuthor.Text,
+            //    Maker =getSelectedMaker(),
+            //    CarName = cbCarName.Text,
+            //    Report = tbReport.Text,
+            //    CarImage =pbCarImage.Image,
+            //};
             if (cbAuthor.Text == "") {
                 tsInfoText.Text = "記録者を入力してください";
                
@@ -71,7 +80,7 @@ namespace CarReportSystem {
                
                 return;
             }
-            CarReports.Add(carReport);
+            //CarReports.Add(carReport);
             setCbAuthor(cbAuthor.Text);    
             setCbCarName(cbCarName.Text);   
             tsInfoText.Text="";
@@ -175,11 +184,9 @@ namespace CarReportSystem {
         }
 
         private void btDelete_Click(object sender, EventArgs e) {
-            CarReports.RemoveAt(dgvCarReports.CurrentRow.Index);
-            if (dgvCarReports.CurrentRow == null) {
-                btDelete.Enabled = false;
-                btModify.Enabled = false;
-            }
+            dgvCarReports.Rows.RemoveAt(dgvCarReports.CurrentRow.Index);
+            //this.Validate();
+            carReportTableTableAdapter.Update(infosys202317DataSet.CarReportTable);
             editItemClear();
         }
 
