@@ -387,5 +387,15 @@ namespace CarReportSystem {
         private void 接続NToolStripMenuItem_Click(object sender, EventArgs e) {
             dbConnection();
         }
+
+       
+
+        private void btAuthorSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByAuthor(this.infosys202317DataSet.CarReportTable,tbAuthorSearch.Text);
+        }
+
+        private void btCarNameSearch_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.FillByCarName(this.infosys202317DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
     }
 }
