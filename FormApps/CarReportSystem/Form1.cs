@@ -371,7 +371,9 @@ namespace CarReportSystem {
 
         }
 
-        private void btConnection_Click(object sender, EventArgs e) {
+        
+
+        private void dbConnection() {
             // TODO: このコード行はデータを 'infosys202317DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202317DataSet.CarReportTable);
             dgvCarReports.ClearSelection();
@@ -380,8 +382,10 @@ namespace CarReportSystem {
                 setCbAuthor(carReport.Auther);
                 setCbCarName(carReport.CarName);
             }
-            
+        }
 
+        private void 接続NToolStripMenuItem_Click(object sender, EventArgs e) {
+            dbConnection();
         }
     }
 }
