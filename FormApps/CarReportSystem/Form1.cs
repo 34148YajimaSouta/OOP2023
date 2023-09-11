@@ -194,11 +194,7 @@ namespace CarReportSystem {
             
         }
 
-        private void setCbCarName() {
-            if (!cbCarName.Items.Contains(cbCarName)) {
-
-            }
-        }
+        
 
         private void btModify_Click(object sender, EventArgs e) {
 
@@ -338,7 +334,8 @@ namespace CarReportSystem {
                 setSelectedMaker(dgvCarReports.CurrentRow.Cells[3].Value.ToString());
                 cbCarName.Text = dgvCarReports.CurrentRow.Cells[4].Value.ToString();
                 tbReport.Text = dgvCarReports.CurrentRow.Cells[5].Value.ToString();
-                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) ?
+                pbCarImage.Image = !dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value) 
+                                    && ((Byte[])dgvCarReports.CurrentRow.Cells[6].Value).Length !=0 ?
                                     ByteArrayToImage((byte[])dgvCarReports.CurrentRow.Cells[6].Value) : null;
                //if (!dgvCarReports.CurrentRow.Cells[6].Value.Equals(DBNull.Value)) {
                //    pbCarImage.Image = ByteArrayToImage((byte[])dgvCarReports.CurrentRow.Cells[6].Value);
@@ -378,6 +375,13 @@ namespace CarReportSystem {
             // TODO: このコード行はデータを 'infosys202317DataSet.CarReportTable' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableTableAdapter.Fill(this.infosys202317DataSet.CarReportTable);
             dgvCarReports.ClearSelection();
+
+            foreach (var carReport in infosys202317DataSet.CarReportTable) {
+                setCbAuthor(carReport.Auther);
+                setCbCarName(carReport.CarName);
+            }
+            
+
         }
     }
 }
