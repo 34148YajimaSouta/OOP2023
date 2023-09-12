@@ -24,7 +24,7 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            
+            dbConnection();
 
             tsInfoText.Text = ""; //情報表示領域のテキストを初期化
             tsTimeDisp.Text = DateTime.Now.ToString("HH時mm分ss秒");
@@ -33,6 +33,8 @@ namespace CarReportSystem {
             dgvCarReports.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             dgvCarReports.Columns[6].Visible = false;
+            dgvCarReports.Columns[0].Visible = false;
+
             btDelete.Enabled = false;
             btModify.Enabled = false;
 
@@ -310,6 +312,7 @@ namespace CarReportSystem {
                         dgvCarReports.DataSource = null;
                         dgvCarReports.DataSource = CarReports;
                         dgvCarReports.Columns[5].Visible = false;
+                        dgvCarReports.Columns[0].Visible = false;
                         dgvCarReports.ClearSelection();     //選択解除
                         cbCarName.Items.Clear();
                         cbAuthor.Items.Clear();
@@ -396,6 +399,15 @@ namespace CarReportSystem {
 
         private void btCarNameSearch_Click(object sender, EventArgs e) {
             carReportTableTableAdapter.FillByCarName(this.infosys202317DataSet.CarReportTable, tbCarNameSearch.Text);
+        }
+
+        private void btDateSearch_Click(object sender, EventArgs e) {
+            //carReportTableTableAdapter.FillByDate(this.infosys202317DataSet.CarReportTable, dtpDateSearchS.Text);
+            carReportTableTableAdapter.FillByDateToDate(this.infosys202317DataSet.CarReportTable, dtpDateSearchS.Text,dtpDateSearchE.Text);
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            carReportTableTableAdapter.Fill(this.infosys202317DataSet.CarReportTable);
         }
     }
 }
