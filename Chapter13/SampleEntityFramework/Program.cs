@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,20 +10,62 @@ using System.Threading.Tasks;
 namespace SampleEntityFramework {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine("# 1.1");
+            Exercise1_1();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.2");
+            Exercise1_2();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.3");
+            Exercise1_3();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.4");
+            Exercise1_4();
+
+            Console.WriteLine();
+            Console.WriteLine("# 1.5");
+            Exercise1_5();
+
+            Console.ReadLine();
             //InsertBooks();
             //Console.Write("データを挿入しました。続けるにはEnderキーを押してください。");
             //AddBooks();
             // DisplayAllBooks();
             //UpdateBook();
 
-            foreach (var book in GetBooks()) {
-                Console.WriteLine($"{book.Title} {book.Author.Name}");
-            }
+            //foreach (var book in GetBooks()) {
+            //    Console.WriteLine($"{book.Title} {book.Author.Name}");
+            //}
+
+            using (var db = new BooksDbContext()) {
+                db.Database.Log = sql => { Debug.Write(sql); };
+                var count = db.Books.Count();
+                Console.WriteLine(count);
+            } 
 
             Console.ReadLine();
             Console.WriteLine();
 
         }
+
+        private static void Exercise1_1() {
+        }
+
+        private static void Exercise1_2() {
+        }
+
+        private static void Exercise1_3() {
+        }
+
+        private static void Exercise1_4() {
+        }
+
+        private static void Exercise1_5() {
+        }
+
         // List 13-5
         static void InsertBooks() {
             using (var db = new BooksDbContext()) {
