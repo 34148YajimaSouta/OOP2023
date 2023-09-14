@@ -52,12 +52,66 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise1_1() {
-        }
+            using (var db = new BooksDbContext()) {
+                //var Author1 = new Author {
+                //    Name = "菊池寛",
+                //    Birthday = new DateTime(1888, 12, 26),
+                //    Gender = "M"
+                //};
+                //var kawabata = new Author {
+                //    Name = "川端康成",
+                //    Birthday = new DateTime(1899, 6, 14),
+                //    Gender = "M"
+                //};
+                var natsume = db.Authors.Single(a => a.Name == "夏目漱石");
+                var book1 = new Book {
+                    Title = "こころ",
+                    PublishedYear = 1991,
+                    Author = natsume,
+                };
 
+                var author2 = db.Authors.Single(a => a.Name == "川端康成");
+                var book2 = new Book {
+                    Title = "伊豆の踊子",
+                    PublishedYear = 2003,
+                    Author = author2,
+                };
+                var author3 = db.Authors.Single(a => a.Name == "菊池寛");
+                var book3 = new Book {
+                    Title = "真珠夫人",
+                    PublishedYear = 2002,
+                    Author =author3
+                };
+                var author4 = db.Authors.Single(a => a.Name == "宮沢賢治");
+                var book4 = new Book {
+                    Title = "注文の多い料理店",
+                    PublishedYear = 2000,
+                    Author=author4,
+                };
+                db.Books.Add(book1);
+                db.Books.Add(book2);
+                db.Books.Add(book3);
+                db.Books.Add(book4);
+                //db.Authors.Add(Author1);
+                //db.Authors.Add(kawabata);
+                db.SaveChanges();
+            }
+        }
         private static void Exercise1_2() {
+            foreach (var book in GetBooks()) {
+                Console.WriteLine($"{book.Title} {book.PublishedYear} {book.Publisher}");
+            }
         }
 
         private static void Exercise1_3() {
+            using (var db = new BooksDbContext()) {
+                var books= db.Books.Where(b => b.Title.Length == db.Books.Max(x => x.Title.Length));
+                foreach (var book in books.ToArray()) {
+                    Console.WriteLine("{0}{1}{2}({3:yyyy/MM/dd})",
+                    book.Title, book.PublishedYear, book.Author, book.Author.Birthday);
+                }
+            }
+            
         }
 
         private static void Exercise1_4() {
