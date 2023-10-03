@@ -24,13 +24,71 @@ namespace RssReader {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.btGet = new System.Windows.Forms.Button();
+            this.lbRssTitle = new System.Windows.Forms.ListBox();
+            this.tbUrl = new System.Windows.Forms.TextBox();
+            this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.SuspendLayout();
+            // 
+            // btGet
+            // 
+            this.btGet.Location = new System.Drawing.Point(640, 12);
+            this.btGet.Name = "btGet";
+            this.btGet.Size = new System.Drawing.Size(75, 23);
+            this.btGet.TabIndex = 0;
+            this.btGet.Text = "取得";
+            this.btGet.UseVisualStyleBackColor = true;
+            this.btGet.Click += new System.EventHandler(this.btGet_Click);
+            // 
+            // lbRssTitle
+            // 
+            this.lbRssTitle.FormattingEnabled = true;
+            this.lbRssTitle.ItemHeight = 12;
+            this.lbRssTitle.Location = new System.Drawing.Point(12, 37);
+            this.lbRssTitle.Name = "lbRssTitle";
+            this.lbRssTitle.Size = new System.Drawing.Size(738, 148);
+            this.lbRssTitle.TabIndex = 1;
+            this.lbRssTitle.Click += new System.EventHandler(this.btGet_Click);
+            this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
+            // 
+            // tbUrl
+            // 
+            this.tbUrl.Location = new System.Drawing.Point(12, 12);
+            this.tbUrl.Name = "tbUrl";
+            this.tbUrl.Size = new System.Drawing.Size(612, 19);
+            this.tbUrl.TabIndex = 2;
+            // 
+            // wbBrowser
+            // 
+            this.wbBrowser.Location = new System.Drawing.Point(12, 191);
+            this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbBrowser.Name = "wbBrowser";
+            this.wbBrowser.ScriptErrorsSuppressed = true;
+            this.wbBrowser.Size = new System.Drawing.Size(738, 458);
+            this.wbBrowser.TabIndex = 3;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 661);
+            this.Controls.Add(this.wbBrowser);
+            this.Controls.Add(this.tbUrl);
+            this.Controls.Add(this.lbRssTitle);
+            this.Controls.Add(this.btGet);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btGet;
+        private System.Windows.Forms.ListBox lbRssTitle;
+        private System.Windows.Forms.TextBox tbUrl;
+        private System.Windows.Forms.WebBrowser wbBrowser;
     }
 }
 
