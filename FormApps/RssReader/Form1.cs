@@ -19,11 +19,20 @@ namespace RssReader {
         public Form1() {
             InitializeComponent();
         }
-        
-        
+
+        private void setCbUrl(string author) {
+            if (!cbUrl.Items.Contains(author)) {
+                cbUrl.Items.Add(author);
+            }
+        }
         private void btGet_Click(object sender, EventArgs e) {
+            if (cbUrl.Text == "")
+                return;
+
+            lbRssTitle.Items.Clear();
             using (var wc=new WebClient()) {
-                var url = wc.OpenRead(tbUrl.Text);
+                var url = wc.OpenRead(cbUrl.Text);
+                setCbUrl(cbUrl.Text);
                 XDocument xdoc = XDocument.Load(url);
 
                 ItemDatas = xdoc.Root.Descendants("item")
@@ -41,6 +50,8 @@ namespace RssReader {
         }
 
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
+            if (lbRssTitle.SelectedIndex == -1)
+                return;
             wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
 
         }
