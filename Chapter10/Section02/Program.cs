@@ -13,7 +13,7 @@ namespace Section02 {
             //StartWith();
             //EndWith();
             //PerfectMatch();
-            PerfectMatch02();
+            PerfectMatch();
         }
 
         //静的メソッドを使用した場合(@…逐語的リテラル)

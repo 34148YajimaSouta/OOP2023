@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 namespace Section03 {
     class Program {
         static void Main(string[] args) {
-            SearchAllWithNextMatch();
+            SearchAll();
         }
 
         private static void NormalSearch() {
             var text = "RegexクラスのMatchメソッドを使います";
-            Match match = Regex.Match(text, @"\p{IsKatakana}+");
+            //Match match = Regex.Match(text, @"\p{IsKatakana}+");
+            Match match = Regex.Match(text, @"\p{IsHiragana}+");
             if (match.Success)
-                Console.WriteLine("{0} {1]", match.Index, match.Value);
+                Console.WriteLine("{0} {1}", match.Index, match.Value);
         }
 
         //10-9
