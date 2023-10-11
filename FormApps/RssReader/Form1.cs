@@ -12,7 +12,8 @@ using System.Xml.Linq;
 
 namespace RssReader {
     
-
+    
+    
     public partial class Form1 : Form {
         //取得データ保存用
         List<ItemData> ItemDatas = new List<ItemData>();
@@ -54,6 +55,90 @@ namespace RssReader {
                 return;
             wbBrowser.Navigate(ItemDatas[lbRssTitle.SelectedIndex].Link);
 
+        }
+
+        private void rbFavorite1_CheckedChanged(object sender, EventArgs e) {
+            using (var wc = new WebClient()) {
+                var favo = "https://news.yahoo.co.jp/rss/topics/entertainment.xmlt";
+                var url = wc.OpenRead(favo);
+                setCbUrl(favo);
+                XDocument xdoc = XDocument.Load(url);
+
+                ItemDatas = xdoc.Root.Descendants("item")
+                                        .Select(x => new ItemData {
+                                            Title = (string)x.Element("title"),
+                                            Link = (string)x.Element("link")
+                                        }).ToList();
+
+                foreach (var item in ItemDatas) {
+                    lbRssTitle.Items.Add(item.Title);
+
+                }
+
+            }
+        }
+
+        private void rbFavorite2_CheckedChanged(object sender, EventArgs e) {
+            using (var wc = new WebClient()) {
+                var favo = "https://news.yahoo.co.jp/rss/topics/sports.xml";
+                var url = wc.OpenRead(favo);
+                setCbUrl(favo);
+                XDocument xdoc = XDocument.Load(url);
+
+                ItemDatas = xdoc.Root.Descendants("item")
+                                        .Select(x => new ItemData {
+                                            Title = (string)x.Element("title"),
+                                            Link = (string)x.Element("link")
+                                        }).ToList();
+
+                foreach (var item in ItemDatas) {
+                    lbRssTitle.Items.Add(item.Title);
+
+                }
+
+            }
+        }
+
+        private void rbFavorite3_CheckedChanged(object sender, EventArgs e) {
+            using (var wc = new WebClient()) {
+                var favo= "https://news.yahoo.co.jp/rss/topics/science.xml";
+                var url = wc.OpenRead(favo);
+                setCbUrl(favo);
+                XDocument xdoc = XDocument.Load(url);
+
+                ItemDatas = xdoc.Root.Descendants("item")
+                                        .Select(x => new ItemData {
+                                            Title = (string)x.Element("title"),
+                                            Link = (string)x.Element("link")
+                                        }).ToList();
+
+                foreach (var item in ItemDatas) {
+                    lbRssTitle.Items.Add(item.Title);
+
+                }
+
+            }
+        }
+
+        private void rbFavorite4_CheckedChanged(object sender, EventArgs e) {
+            using (var wc = new WebClient()) {
+                var favo= "https://news.yahoo.co.jp/rss/topics/it.xml"
+                var url = wc.OpenRead(favo);
+                setCbUrl(favo);
+                XDocument xdoc = XDocument.Load(url);
+
+                ItemDatas = xdoc.Root.Descendants("item")
+                                        .Select(x => new ItemData {
+                                            Title = (string)x.Element("title"),
+                                            Link = (string)x.Element("link")
+                                        }).ToList();
+
+                foreach (var item in ItemDatas) {
+                    lbRssTitle.Items.Add(item.Title);
+
+                }
+
+            }
         }
     }
 }
