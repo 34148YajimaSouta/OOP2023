@@ -122,7 +122,7 @@ namespace RssReader {
 
         private void rbFavorite4_CheckedChanged(object sender, EventArgs e) {
             using (var wc = new WebClient()) {
-                var favo= "https://news.yahoo.co.jp/rss/topics/it.xml"
+                var favo = "https://news.yahoo.co.jp/rss/topics/it.xml";
                 var url = wc.OpenRead(favo);
                 setCbUrl(favo);
                 XDocument xdoc = XDocument.Load(url);
@@ -139,6 +139,10 @@ namespace RssReader {
                 }
 
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
         }
     }
 }
