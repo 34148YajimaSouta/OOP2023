@@ -12,6 +12,8 @@ namespace Exercise02.ConcreteConverter {
             new FeetConverter(),
             new YardConverter(),
             new InchConverter(),
+            new MileConverter(),
+            new KMaterConverter(),
         };
 
         public static Framework.ConverterBase GetInstance(string name) {

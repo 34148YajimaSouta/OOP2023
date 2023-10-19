@@ -46,7 +46,9 @@
     <Compile Include="ConcreteConverter\ConverterFactory.cs" />
     <Compile Include="ConcreteConverter\FeetConverter.cs" />
     <Compile Include="ConcreteConverter\InchConverter.cs" />
+    <Compile Include="ConcreteConverter\KMaterConverter.cs" />
     <Compile Include="ConcreteConverter\MeterConverter.cs" />
+    <Compile Include="ConcreteConverter\MileConverter.cs" />
     <Compile Include="ConcreteConverter\YardConverter.cs" />
     <Compile Include="Framework\ConverterBase.cs" />
     <Compile Include="Framework\DistanceConverter.cs" />
