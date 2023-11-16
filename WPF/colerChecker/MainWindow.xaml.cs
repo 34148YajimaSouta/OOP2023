@@ -36,13 +36,28 @@ namespace colerChecker {
         }
 
         private void cbColor_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            var selectColor = (MyColor)((ComboBox)sender).SelectedItem;
-            colorArea.Background = new SolidColorBrush(selectColor.Color);
+            var selectedColor = (MyColor)((ComboBox)sender).SelectedItem;
+            var color = selectedColor.Color;
+            var name = selectedColor.Name;
+            colorArea.Background = new SolidColorBrush(color);
+
+            rSlider.Value = (double)color.R;
+            gSlider.Value = (double)color.G;
+            bSlider.Value = (double)color.B;
         }
+        
 
         private void stock_Click(object sender, RoutedEventArgs e) {
             string colorList = string.Format("R={0} G={1} B={2}",rSlider.Value,gSlider.Value,bSlider.Value);
             colorListBox.Items.Add(colorList);
+            //colorListBox.Items.Add(.);
+        }
+
+        private void colorListBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            string[] split = colorListBox.SelectedItem.ToString().Split(' ', '=');
+            rValue.Text = split[1];
+            gValue.Text = split[3];
+            bValue.Text = split[5];         
         }
     }
 }

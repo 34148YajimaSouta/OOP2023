@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VisibilityConverter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="250" Width="300">
+     <Window.Resources>
+        <DataTemplate DataType="{x:Type local:ColorViewModel}">
+            <StackPanel Orientation="Horizontal">
+                <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black"  >
+                    <Border.Background>
+                        <SolidColorBrush Color="{Binding Color}"/>
+                    </Border.Background>
+                </Border>
+                <TextBlock Margin="2" Text="{Binding Name}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <StackPanel>
+       
         <StackPanel.Resources>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </StackPanel.Resources>
@@ -19,5 +32,10 @@
             <RadioButton Content="設定小項目3"/>
 
         </StackPanel>
+        <Button Margin="10" Content="ボタン1" Background="{DynamicResource ButtonBrushKey}"/>
+        <Button Margin="10" Content="ボタン2" Background="{StaticResource ButtonBrushKey}"/>
+        <Button Margin="10" Content="リソース変更" Click="Button_Click"/>
+        <ComboBox ItemsSource="{x:Static local:ColorViewModel.ColorList}"/>
+
     </StackPanel>
 </Window>
