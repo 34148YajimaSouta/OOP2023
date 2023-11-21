@@ -32,11 +32,13 @@ namespace RssReader {
             this.rbFavorite2 = new System.Windows.Forms.RadioButton();
             this.rbFavorite3 = new System.Windows.Forms.RadioButton();
             this.tbInputText = new System.Windows.Forms.TextBox();
-            this.tbInputUrl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btFavoInput = new System.Windows.Forms.Button();
+            this.tbInputUrl = new System.Windows.Forms.TextBox();
+            this.cbFavoImp = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btGet
@@ -115,22 +117,15 @@ namespace RssReader {
             // 
             // tbInputText
             // 
-            this.tbInputText.Location = new System.Drawing.Point(675, 125);
+            this.tbInputText.Location = new System.Drawing.Point(675, 135);
             this.tbInputText.Name = "tbInputText";
             this.tbInputText.Size = new System.Drawing.Size(121, 19);
             this.tbInputText.TabIndex = 13;
             // 
-            // tbInputUrl
-            // 
-            this.tbInputUrl.Location = new System.Drawing.Point(675, 151);
-            this.tbInputUrl.Name = "tbInputUrl";
-            this.tbInputUrl.Size = new System.Drawing.Size(121, 19);
-            this.tbInputUrl.TabIndex = 14;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(640, 111);
+            this.label1.Location = new System.Drawing.Point(653, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 12);
             this.label1.TabIndex = 15;
@@ -139,41 +134,67 @@ namespace RssReader {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(638, 128);
+            this.label5.Location = new System.Drawing.Point(638, 138);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 12);
             this.label5.TabIndex = 20;
             this.label5.Text = "タイトル";
             // 
-            // label6
+            // btFavoInput
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(640, 154);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 12);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "URL";
+            this.btFavoInput.Location = new System.Drawing.Point(802, 156);
+            this.btFavoInput.Name = "btFavoInput";
+            this.btFavoInput.Size = new System.Drawing.Size(65, 23);
+            this.btFavoInput.TabIndex = 22;
+            this.btFavoInput.Text = "登録";
+            this.btFavoInput.UseVisualStyleBackColor = true;
+            this.btFavoInput.Click += new System.EventHandler(this.btFavoInput_Click);
             // 
-            // button1
+            // tbInputUrl
             // 
-            this.button1.Location = new System.Drawing.Point(802, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "登録";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.tbInputUrl.Location = new System.Drawing.Point(675, 160);
+            this.tbInputUrl.Name = "tbInputUrl";
+            this.tbInputUrl.Size = new System.Drawing.Size(121, 19);
+            this.tbInputUrl.TabIndex = 23;
+            // 
+            // cbFavoImp
+            // 
+            this.cbFavoImp.FormattingEnabled = true;
+            this.cbFavoImp.Location = new System.Drawing.Point(802, 134);
+            this.cbFavoImp.Name = "cbFavoImp";
+            this.cbFavoImp.Size = new System.Drawing.Size(65, 20);
+            this.cbFavoImp.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(642, 163);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 12);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "URL";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(810, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "登録先";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 661);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbFavoImp);
+            this.Controls.Add(this.tbInputUrl);
+            this.Controls.Add(this.btFavoInput);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbInputUrl);
             this.Controls.Add(this.tbInputText);
             this.Controls.Add(this.rbFavorite3);
             this.Controls.Add(this.rbFavorite2);
@@ -183,7 +204,7 @@ namespace RssReader {
             this.Controls.Add(this.lbRssTitle);
             this.Controls.Add(this.btGet);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RssReader";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,11 +221,13 @@ namespace RssReader {
         private System.Windows.Forms.RadioButton rbFavorite2;
         private System.Windows.Forms.RadioButton rbFavorite3;
         private System.Windows.Forms.TextBox tbInputText;
-        private System.Windows.Forms.TextBox tbInputUrl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btFavoInput;
+        private System.Windows.Forms.TextBox tbInputUrl;
+        private System.Windows.Forms.ComboBox cbFavoImp;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

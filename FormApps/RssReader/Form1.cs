@@ -66,68 +66,87 @@ namespace RssReader {
         }
 
         private void rbFavorite1_CheckedChanged(object sender, EventArgs e) {
-            using (var wc = new WebClient()) {
-                lbRssTitle.Items.Clear();
-               // var favo = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
-                var url = wc.OpenRead(favo1);
-                setCbUrl(favo1);
-                XDocument xdoc = XDocument.Load(url);
+            try {
+                using (var wc = new WebClient()) {
+                    lbRssTitle.Items.Clear();
+                    // var favo = "https://news.yahoo.co.jp/rss/topics/entertainment.xml";
+                    var url = wc.OpenRead(favo1);
+                    setCbUrl(favo1);
+                    XDocument xdoc = XDocument.Load(url);
 
-                ItemDatas = xdoc.Root.Descendants("item")
-                                        .Select(x => new ItemData {
-                                            Title = (string)x.Element("title"),
-                                            Link = (string)x.Element("link")
-                                        }).ToList();
+                    ItemDatas = xdoc.Root.Descendants("item")
+                                            .Select(x => new ItemData {
+                                                Title = (string)x.Element("title"),
+                                                Link = (string)x.Element("link")
+                                            }).ToList();
 
-                foreach (var item in ItemDatas) {
-                    lbRssTitle.Items.Add(item.Title);
+                    foreach (var item in ItemDatas) {
+                        lbRssTitle.Items.Add(item.Title);
+
+                    }
 
                 }
-
+            }
+            catch (Exception) {
+                MessageBox.Show("URLが無効です、お気に入り登録をしなおしてください");
+                rbFavorite1.Checked = false;
             }
         }
 
+
+
         private void rbFavorite2_CheckedChanged(object sender, EventArgs e) {
-            using (var wc = new WebClient()) {
-                lbRssTitle.Items.Clear();
-                //var favo = "https://news.yahoo.co.jp/rss/topics/sports.xml";
-                var url = wc.OpenRead(favo2);
-                setCbUrl(favo2);
-                XDocument xdoc = XDocument.Load(url);
+            try {
+                using (var wc = new WebClient()) {
+                    lbRssTitle.Items.Clear();
+                    //var favo = "https://news.yahoo.co.jp/rss/topics/sports.xml";
+                    var url = wc.OpenRead(favo2);
+                    setCbUrl(favo2);
+                    XDocument xdoc = XDocument.Load(url);
 
-                ItemDatas = xdoc.Root.Descendants("item")
-                                        .Select(x => new ItemData {
-                                            Title = (string)x.Element("title"),
-                                            Link = (string)x.Element("link")
-                                        }).ToList();
+                    ItemDatas = xdoc.Root.Descendants("item")
+                                            .Select(x => new ItemData {
+                                                Title = (string)x.Element("title"),
+                                                Link = (string)x.Element("link")
+                                            }).ToList();
 
-                foreach (var item in ItemDatas) {
-                    lbRssTitle.Items.Add(item.Title);
+                    foreach (var item in ItemDatas) {
+                        lbRssTitle.Items.Add(item.Title);
+
+                    }
 
                 }
-
+            }
+            catch (Exception) {
+                MessageBox.Show("URLが無効です、お気に入り登録をしなおしてください");
+                rbFavorite2.Checked = false;
             }
         }
 
         private void rbFavorite3_CheckedChanged(object sender, EventArgs e) {
-            using (var wc = new WebClient()) {
-                lbRssTitle.Items.Clear();
-                //var favo= "https://news.yahoo.co.jp/rss/topics/science.xml";
-                var url = wc.OpenRead(favo3);
-                setCbUrl(favo3);
-                XDocument xdoc = XDocument.Load(url);
+            try {
+                using (var wc = new WebClient()) {
+                    lbRssTitle.Items.Clear();
+                    //var favo= "https://news.yahoo.co.jp/rss/topics/science.xml";
+                    var url = wc.OpenRead(favo3);
+                    setCbUrl(favo3);
+                    XDocument xdoc = XDocument.Load(url);
 
-                ItemDatas = xdoc.Root.Descendants("item")
-                                        .Select(x => new ItemData {
-                                            Title = (string)x.Element("title"),
-                                            Link = (string)x.Element("link")
-                                        }).ToList();
+                    ItemDatas = xdoc.Root.Descendants("item")
+                                            .Select(x => new ItemData {
+                                                Title = (string)x.Element("title"),
+                                                Link = (string)x.Element("link")
+                                            }).ToList();
 
-                foreach (var item in ItemDatas) {
-                    lbRssTitle.Items.Add(item.Title);
+                    foreach (var item in ItemDatas) {
+                        lbRssTitle.Items.Add(item.Title);
 
+                    }
                 }
-
+            }
+            catch (Exception) {
+                MessageBox.Show("URLが無効です、お気に入り登録をしなおしてください");
+                rbFavorite3.Checked = false;
             }
         }
 
@@ -154,29 +173,45 @@ namespace RssReader {
         //}
 
         private void Form1_Load(object sender, EventArgs e) {
+            chengecbFavoImp();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            rbFavorite1.Text = tbInputText.Text;
+       private void chengecbFavoImp() {
+            cbFavoImp.Items.Clear();
+            cbFavoImp.Items.Add("*未選択*");
+            cbFavoImp.SelectedIndex = 0;
+            cbFavoImp.Items.Add(rbFavorite1.Text);
+            cbFavoImp.Items.Add(rbFavorite2.Text);
+            cbFavoImp.Items.Add(rbFavorite3.Text);
         }
 
-        private void button1_Click_1(object sender, EventArgs e) {
-            if (rbFavorite1.Checked) {
-                rbFavorite1.Text = tbInputText.Text;
-                favo1 = tbInputUrl.Text;
-                rbFavorite1.Checked = false;
-            }else if (rbFavorite2.Checked) {
-                rbFavorite2.Text = tbInputText.Text;
-                favo2 = tbInputUrl.Text;
-                rbFavorite2.Checked = false;
+
+        private void btFavoInput_Click(object sender, EventArgs e) {
+            if (tbInputText.Text != string.Empty) {
+                if (tbInputUrl.Text != string.Empty) {
+                    if (rbFavorite1.Text == cbFavoImp.SelectedItem.ToString()) {
+                        rbFavorite1.Text = tbInputText.Text;
+                        favo1 = tbInputUrl.Text;
+                        rbFavorite1.Checked = false;
+                        chengecbFavoImp();
+                    }
+                    else if (rbFavorite2.Text == cbFavoImp.SelectedItem.ToString()) {
+                        rbFavorite2.Text = tbInputText.Text;
+                        favo2 = tbInputUrl.Text;
+                        rbFavorite2.Checked = false;
+                        chengecbFavoImp();
+                    }
+                    else if (rbFavorite3.Text == cbFavoImp.SelectedItem.ToString()) {
+                        rbFavorite3.Text = tbInputText.Text;
+                        favo3 = tbInputUrl.Text;
+                        rbFavorite3.Checked = false;
+                        chengecbFavoImp();
+                    }
+                    else {
+                    }
+                }
             }
-            else if(rbFavorite3.Checked){
-                rbFavorite3.Text = tbInputText.Text;
-                favo3 = tbInputUrl.Text;
-                rbFavorite3.Checked = false;
-            }
-            else {
-            }
+
         }
     }
 }
